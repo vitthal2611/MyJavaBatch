@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -17,26 +18,44 @@ public class SongListDemo {
 		List<Song> songList = new ArrayList<Song>();
 
 		addSongList(songList);
-		System.out.println(songList);
 
-		// Sorted List..
-
-		Collections.sort(songList);
-
-		// Compartor
-
-		//Collections.sort(songList, new SongNameComparator());
-
-		System.out.println("After Sorting");
+		System.out.println("Before Sorting");
 
 		for (Song song : songList) {
 			System.out.println(song);
 		}
 
-		// Duplicate
+		// Sorted List..
 
-		Set<Song> songset = new HashSet<>(songList);
+		System.out.println("Sorting :: Comparable ");
+
+		Collections.sort(songList);
+
+		System.out.println("printing after Comparable Sorting");
+
+		for (Song song : songList) {
+			System.out.println(song);
+		}
+
+		System.out.println("Sorting :: Comparator ");
+
+		Collections.sort(songList, new SongNameComparator());
 		
+		//Collections.sort(songList, new SongYearComparator());
+
+		System.out.println("printing after Comparator Sorting");
+
+		for (Song song : songList) {
+			System.out.println(song);
+		}
+
+		// Duplicate Removal Set
+
+		Set<Song> songset = new HashSet(songList);
+		
+		// Add -- Hashcode -- index
+		
+		// Same HashCode --- Equal
 		
 
 		System.out.println("After removing Duplicate Element");
@@ -49,11 +68,11 @@ public class SongListDemo {
 
 	private static void addSongList(List<Song> songList) {
 
-		songList.add(new Song(1, "Aaj Se teri", "Lata", "2018"));
+		songList.add(new Song(1, "Aaj Se teri", "Lata", "2018"));  // 4
 		songList.add(new Song(2, "Tere Mere", "Mica", "2019"));
-		songList.add(new Song(3, "Enna Sona", "Arjit", "2017"));
-		songList.add(new Song(4, "Enna Sona", "Arjit", "2017"));
-		songList.add(new Song(4, "Enna Sona", "Arjit", "2017"));
+		songList.add(new Song(3, "Enna Sona", "Arjit", "2017")); // 4
+		songList.add(new Song(4, "Enna Sona", "Arjit", "2017")); //4
+		songList.add(new Song(4, "Enna Sona", "Arjit", "2017"));  // 4
 
 	}
 

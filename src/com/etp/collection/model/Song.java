@@ -66,5 +66,14 @@ public class Song implements Comparable<Song> {
 		Song s = (Song) obj;
 		return this.getSongName().equals(s.getSongName());
 	}
+	
+	
+	@Override
+	public int hashCode() {
+		
+		System.out.println(this.getSongName() +":: "+this.getSongName().hashCode());
+		
+		return this.getSongName().hashCode();
+	}
 
 }
